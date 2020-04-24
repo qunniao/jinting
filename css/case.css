@@ -1,0 +1,425 @@
+.planting{
+    width: 100%;
+    height: 650px;
+}
+
+li{
+    list-style: none;
+    display: inline-block;
+}
+
+.list-item{
+    width: 100%;
+    height: 742px;
+    margin-top: 122px;
+}
+
+.list-item img{
+    width: 100%;
+    height: 650px;
+}
+
+.clear:after {
+    clear: both;
+    content: ".";
+    display: block; 
+    height: 0; 
+    overflow: hidden; 
+    visibility: hidden; 
+    zoom: 1; 
+}
+.flip-list-enter-active, .flip-list-leave-active {
+    transition: all 3s;
+}
+
+.flip-list-enter, .flip-list-leave-active {
+    opacity: 0;
+}
+
+#app li {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.section{
+    width: 100%;
+}
+
+.exhibition{
+    width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+}
+
+.exhibition .title{
+    width: 100%;
+    border-bottom: 1px dashed #DEDEDE;
+}
+
+.exhibition .content{
+    width: 578px;
+    height: 129px;
+    margin: 0 auto;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.lianxwo{
+    color: red;
+    text-decoration: none;
+}
+
+.exhibition .content h3{
+    font-size: 24px;
+    color: #333;
+    font-weight: normal;
+    text-align: center;
+}
+
+.exhibition .content span{
+    font-size: 14px;
+    color: #9999B2;
+    font-weight: normal;
+    text-align: center;
+    line-height: 40px;
+    position: relative;
+    top: -10px;
+}
+
+.classification{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.content-header{
+    padding-left: 0;
+}
+
+.content-header li {
+    width: 171px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.content-header li:hover {
+    color: red;
+    cursor: default;
+}
+
+.caseList{
+    width: 100%;
+    max-height: 500px;
+}
+
+.caseList ul{
+    padding: 0;
+    margin-top: 0;
+}
+
+.caseList ul li:nth-child(4),
+.caseList ul li:nth-child(5),
+.caseList ul li:nth-child(6){
+    position: relative;
+    top: -6px;
+}
+
+.caption{
+    width: 400px;
+    height: 320px;
+}
+
+.caption img{
+    width: 96%;
+    height: 250px;
+    margin: 2%;
+}
+
+.buzhidao{
+    width: 400px;
+    height: 250px;
+    margin-top: -263px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #fff;
+    z-index: 0;
+}
+
+.buzhidao span{
+    position: relative;
+    z-index: 1;
+}
+
+.buzhidao:hover{
+    background: rgba(255,255,255,0.5);
+}
+
+.caption img:hover{
+    transform: scale(0.99);
+    transition: all 0.6s; 
+}
+
+.caption::before,
+.caption::after {
+    position: absolute;
+    width: 400px;
+    height: 250px;
+    color: #fff;
+    opacity: 0;
+    z-index: 1;
+    margin-left: -400px;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    transition: opacity 1s;
+}
+
+.caption:hover::before,
+.caption:hover::after {
+    opacity: 1;
+}
+
+.pictureWall{
+    width: 100%;
+    height: 1158px;
+    background: url('../images/anlibeijing.jpg') no-repeat;
+    background-size:100%  100%;
+}
+
+.pictureWall .title{
+    width: 100%;
+    position: relative;
+    top: 80px;
+}
+
+.pictureWall .content{
+    width: 578px;
+    height: 129px;
+    margin: 0 auto;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.pictureWall .content h3{
+    font-size: 24px;
+    color: #333;
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+}
+
+.pictureWall .content span{
+    font-size: 14px;
+    color: #9999B2;
+    font-weight: normal;
+    text-align: center;
+    line-height: 40px;
+    position: relative;
+    top: -10px;
+    color: #BEBEBE;
+}
+
+.wall{
+    width: 1200px;
+    height: 758px;
+    background: #fff;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+
+.imageWall{
+    display: inline-block;
+}
+
+.imageWall:nth-child(1) img,
+.imageWall:nth-child(2) img{
+    width: 383px;
+    height: 226px;
+    position: relative;
+    top:-246px;
+    margin-left: 20px;
+}
+
+.imageWall:nth-child(3) img{
+    width: 355px;
+    height: 472px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.imageWall:nth-child(4) img{
+    width: 786px;
+    height: 472px;
+    margin-top: -226px;
+    margin-left: 20px;
+}
+
+.imageWall:nth-child(5) img{
+    width: 354px;
+    height: 226px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.contact{
+    width: 100%;
+    height: 240px;
+}
+
+.contact .content{
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact .content  h3{
+    font-size: 30px;
+    color: red;
+    margin-top: 100px;
+}
+
+.contact .content  a{
+    background: #fff;
+    border: 1px solid red;
+    cursor: pointer;
+    font-size: 16px;
+    color: red;
+    padding: 15px 48px;
+    position: relative;
+    top: 60px;
+}
+
+.six-top{
+    width:1200px;
+    height:50px;
+    line-height: 50px;
+    margin: 0 auto;
+}
+
+.six-top .six-top-item{
+    width:120px;
+    text-align:center;
+    float:left;
+    margin-right:2px;
+    cursor:pointer;
+}
+
+.six-top .six-top-item-spe{
+    margin-right:0px;
+}
+
+.six-top .on{
+    color: red;
+}
+
+.six-cont{
+    width:1200px;
+    border:1px solid #e8e8e8;
+    position:relative;
+    margin: 0 auto;
+}
+
+.cont{
+    width:1200px;
+    height:450px;
+    position:absolute;
+    left:0;
+    top:0;
+}
+
+.six-cont1{
+    display:block;
+}
+
+.six-cont2{
+    display:none;
+}
+
+.six-cont3{
+    display:none;
+}
+
+.six-cont4{
+    display:none;
+}
+
+.six-cont5{
+    display:none;
+}
+
+.six-cont6{
+    display:none;
+}
+
+.six-cont7{
+    display:none;
+}
+
+.six-cont8{
+    display:none;
+}
+
+.caseUl{
+    padding: 0;
+}
+
+.productTitle{
+    width: 400px;
+    height: 50px;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    line-height: 50px;
+}
+
+.productTitle span{
+    font-size: 14px;
+    color: #333;
+}
+
+.page-bar{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.page-bar li:first-child>a {
+   margin-left: 0px
+}
+.page-bar a{
+    border: 1px solid #ddd;
+    text-decoration: none;
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    cursor: pointer;
+    font-size: 16px;
+}
+.page-bar a:hover{
+    background-color: #eee;
+}
+.page-bar a.banclick{
+    cursor:not-allowed;
+}
+.page-bar .active a{
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
+}
+.page-bar i{
+    font-style:normal;
+    color: #d44950;
+    margin: 0px 4px;
+    font-size: 12px;
+}

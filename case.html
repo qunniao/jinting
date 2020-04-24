@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" href="./css/case.css" rel="stylesheet" />
+    <link type="text/css" href="./css/header.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/footer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/method.js"></script>
+    <script src="./js/iconfont.js"></script>
+    <script src="./js/goTop.js"></script>
+    <link rel="Shortcut Icon" href="./images/logo3.png" />
+    <title>金廷基业房地产营销策划</title>
+    <style>
+        #icon {
+            width: 60px;
+            height: 60px;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body style="margin: 0">
+    <div class="header">
+        <div class="header_center">
+            <div class="header_image">
+                <img src="./images/logo2.png" alt="金廷">
+            </div>
+            <div class="navigation">
+                <div class="navigation-nav">
+                    <ul class="navigation-item" id="toubua">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="./introduction.html">公司介绍</a></li>
+                        <li><a href="javascriot:;" id="active">热销项目</a></li>
+                        <li><a href="./news.html">新闻资讯</a></li>
+                        <li><a href="./contact.html">联系我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="planting" id="app">
+            <transition-group name="flip-list" tag="ul">
+                <li v-for="curImg in currImgs" v-bind:key="curImg" class="list-item">
+                    <img :src="curImg">
+                </li>
+            </transition-group>
+        </div>
+    </div>
+    <!-- 轮播图以下部分 -->
+    <div class="section" id="case">
+        <div class="exhibition">
+            <div class="title">
+                <div class="content">
+                    <h3>热销项目</h3>
+                    <span>商业地产、综合地产、住宅地产、其他各类资产的合作服务销售管理、项目全案代理</span>
+                </div>
+            </div>
+            <div class="six-cont">
+                <ul class="caseUl">
+                    <a v-bind:href="'caseDetails.html?cid='+item.cid" v-for="item in caseLista">
+                        <li class="caption">
+                            <img :src="item.cover" id="qwe">
+                            <div class="buzhidao">
+                                <span>{{item.name}}</span>
+                            </div>
+                            <div class="productTitle">
+                                <span>{{item.name}}</span>
+                            </div>
+                        </li>
+                    </a>
+                </ul>
+                <div class="page-bar">
+                    <ul class="pageSI">
+                        <li v-if="cur>1"><a v-on:click="cur--,pageClick()">上一页</a></li>
+                        <li v-if="cur==1"><a class="banclick">上一页</a></li>
+                        <!--当前页背景色为蓝色-->
+                        <li v-for="index in indexs" v-bind:class="{ 'active': cur == index}">
+                            <a v-on:click="btnClick(index)">{{ index }}</a>
+                        </li>
+                        <li v-if="cur<all"><a v-on:click="cur++,pageClick()">下一页</a></li>
+                        <li v-if="cur == all"><a class="banclick">下一页</a></li>
+                        <li><a>共<i>{{all}}</i>页</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="pictureWall">
+            <div class="title">
+                <div class="content">
+                    <h3>品牌营销推广案例</h3>
+                    <span>我相信品牌要获得实效，创意是强有力的解决武器，我们会将创意贯穿于产品设计中</span>
+                </div>
+            </div>
+            <div class="wall">
+                <div class="imageWall" v-for="item in imagesWall">
+                    <img :src="item.url">
+                </div>
+            </div>
+        </div> -->
+
+        <!-- <div class="contact">
+            <div class="content">
+                <h3>“每一个品牌都是一个产品，但不是所有的产品都是品牌”</h3>
+                <a href="./contact.html" class="lianxwo">联系我们</a>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="goTop" id="gotoTop">
+        <img src="./images/02.png" alt="">
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer" id="link">
+        <div class="center">
+            <div class="left">
+                <svg class="icon" id="icon" aria-hidden="true">
+                    <use xlink:href="#icon-gerenyonghutouxiang" style="color: #7B818D"></use>
+                </svg>
+                <span class="time">(9:00-21:00)</span>
+                <h3>0571-86390185</h3>
+                <span class="qq">QQ联系方式:1523446254</span>
+            </div>
+            <div class="zhongjian">
+                <ul>
+                    <li><a href="javascript:;">首 页</a></li>
+                    <li><a href="/case.html">案例欣赏</a></li>
+                    <li><a href="javascript:;">服务介绍</a></li>
+                    <li><a href="./news.html">新闻动态</a></li>
+                </ul>
+                <ul>
+                    <li><a href="./introduction.html">关于我们</a></li>
+                    <li><a href="./contact.html">联系我们</a></li>
+                    <li><a href="javascript:;">留言板</a></li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="picture">
+                    <img src="./images/xiaochengxu.jpg" alt="">
+                    <span class="guanzhu">关注微信公众号</span>
+                </div>
+            </div>
+            <div class="lianjie">
+                <span class="chuanmei">Copyright © 2013 - 2017　faane.com　杭州金廷基业房地产营销策划有限公司　版权所有 苏公网安备
+                    32011202000125号‍</span>
+                <div class="youqing">
+                    <ul>
+                        <li v-for='item in link'><a :href="'http://'+item.www">{{item.name}}</a></li>
+                    </ul>
+                </div>
+                <span class="chuanmei">手机版 | 苏ICP备18005516号</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+    var serverHost = getServerHost();
+    var serverHosts = getServerHosts();
+    new Vue({
+        el: '#app',
+        data: {
+            currImgs: [],
+            imgs: [
+                './images/anlilunbo_Jc.jpg',
+            ],
+            index: 0,
+        },
+        mounted: function () {
+            this.currImgs = [this.imgs[0]];
+            this.startChange();
+        },
+        methods: {
+            startChange: function () {
+                var _this = this;
+                setInterval(function () {
+                    if (_this.index < _this.imgs.length - 1) {
+                        _this.index++
+                    } else {
+                        _this.index = 0
+                    }
+                    _this.currImgs.splice(0, 1, _this.imgs[_this.index]);
+                }, 8000);
+            },
+            handleChange(index) {
+                if (index > this.currentIndex) {
+                    this.direction = 'forward'
+                } else {
+                    this.direction = ''
+                }
+                this.currentIndex = index;
+            }
+        }
+    })
+    var app = new Vue({
+        el: '#case',
+        data: {
+            casea: [],
+            caseLista: [],
+            imagesWall: [{
+                    url: './images/pp1.jpg'
+                },
+                {
+                    url: './images/pp3.jpg'
+                },
+                {
+                    url: './images/pp6.jpg'
+                },
+                {
+                    url: './images/pp4.jpg'
+                },
+                {
+                    url: './images/pp5.jpg'
+                }
+            ],
+            all: "", //总页数
+            cur: 1, //当前页码
+            size: 9,
+        },
+        methods: {
+            btnClick: function (data) {
+                var that = this
+                if (data != that.cur) {
+                    that.cur = data;
+                }
+                $.ajax({
+                    url: serverHosts + '/case/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: that.cur,
+                        size: that.size
+                    },
+                    success: function (data) {
+                        that.caseLista = data.data.records
+                    }
+                })
+            },
+            pageClick: function () {
+                //获取新闻列表v
+                var that = this
+                $.ajax({
+                    url: serverHosts + '/case/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: that.cur,
+                        size: that.size
+                    },
+                    success: function (data) {
+                        that.caseLista = data.data.records
+                    }
+                })
+            },
+            findData: function () {
+                var that = app;
+                $.ajax({
+                    url: serverHosts + '/case/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: 1,
+                        size:9
+                    },
+                    success: function (data) {
+                        that.caseLista = data.data.records
+                        that.all = Math.ceil(data.data.total / that.size)
+                        var alla = Math.ceil(that.all)
+                        console.log(that.all)
+                    }
+                })
+                //获取案例分离
+                $.ajax({
+                    url: serverHosts + '/caseLabel/list',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (data) {
+                        that.casea = data.data
+                    }
+                })
+                $('.six-top').on('mouseover', '.six-top-item', function (e) {
+                    var currentIndex = $(this).index() + 1;
+                    hideAll();
+                    $.ajax({
+                        url: serverHosts + '/case',
+                        type: 'get',
+                        dataType: 'json',
+                        data: {
+                            page: 1,
+                            bid: this.id
+                        },
+                        success: function (data) {
+                            that.caseLista = data.data
+                        },
+                        error: function () {
+                            console.log("失败了")
+                        }
+                    })
+                    hideAllTop();
+                    $(this).css('color', 'red');
+                    $('.six-cont' + currentIndex).show();
+                });
+
+
+                function hideAll() {
+                    for (var i = 1; i < 8; i++) {
+                        $('.six-cont' + i).hide();
+                    }
+                }
+
+                function hideAllTop() {
+                    for (var i = 0; i < 7; i++) {
+                        $('.six-top-item').eq(i).css('color', '#333');
+                    }
+                }
+            }
+        },
+        
+        computed: {
+            indexs: function () {
+                var left = 1;
+                var right = this.all;
+                var ar = [];
+                if (this.all >= 5) {
+                    //这里最大范围从3到6，如果到达7，那么下边加2变成9，已经超过最大的范围值
+                    if (this.cur > 3 && this.cur < this.all - 1) {
+                        //以4为参考基准，左面加2右边加2
+                        left = this.cur - 2
+                        right = this.cur + 2
+                    } else {
+                        if (this.cur <= 3) {
+                            left = 1
+                            right = 5
+                        } else {
+                            right = this.all
+                            left = this.all - 4
+                        }
+                    }
+                }
+                while (left <= right) {
+                    ar.push(left)
+                    left++
+                }
+                console.log(ar);
+                return ar
+            }
+        }
+    });
+    app.findData();
+</script>
+<script>
+    var serverHost = getServerHosts();
+    var link = new Vue({
+        el: '#link',
+        data: {
+            link: [],
+        },
+        methods: {
+            findData: function () {
+                var that = link;
+                $.ajax({
+                    url: serverHost + '/links/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: 1,
+                        size: 20
+                    },
+                    success: function (data) {
+                        that.link = data.data.records
+                        console.log(that.link)
+                    }
+                })
+            }
+        },
+    })
+    link.findData()
+    gotoTop();
+</script>

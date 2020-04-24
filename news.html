@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./js/vue.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/method.js"></script>
+    <script src="./js/iconfont.js"></script>
+    <script src="./js/time.js"></script>
+    <script src="./js/goTop.js"></script>
+    <script>
+        window.addEventListener(('orientationchange' in window ? 'orientationchange' : 'resize'), (function () {
+            function c() {
+                var d = document.documentElement;
+                let clientWidths = d.clientWidth
+                if (clientWidths < 1260) {
+                    clientWidths = 1260
+                }
+                var cw = clientWidths || 1920;
+                d.style.fontSize = (20 * (cw / 960)) > 40 ? 40 + 'px' : (20 * (cw / 960)) + 'px';
+            }
+            c();
+            return c;
+        })(), false);
+        // $($('.contentli').width($('.contentli').innerWidth()))
+    </script>
+    <style>
+        #navigation-nav {
+            height: 48px;
+            margin-top: 44px;
+        }
+    </style>
+    <link rel="stylesheet" href="./css/news.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="Shortcut Icon" href="./images/logo3.png" />
+    <title>金廷基业房地产营销策划</title>
+</head>
+
+<body style="margin: 0">
+    <div class="header">
+        <div class="header_center">
+            <div class="header_image">
+                <img src="./images/logo2.png" alt="金廷">
+            </div>
+            <div class="navigation">
+                <div class="navigation-nav" id="navigation-nav">
+                    <ul class="navigation-item" id="toubu">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="./introduction.html">公司介绍</a></li>
+                        <li><a href="./case.html">热销项目</a></li>
+                        <li><a href="javascriot:;" id="active">新闻资讯</a></li>
+                        <li><a href="./contact.html">联系我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="newscontent" id="app">
+        <div class="newsleftlist">
+            <div class="newdetail" v-for="item in news">
+                <a v-bind:href="'./newsDetails.html?id='+item.id">
+                    <img class="newscover" :src="item.cover">
+                    <div class="nessdetailcontent">
+                        <div class="newsheader">
+                            <div class="newslabelbox"></div>{{item.title}}
+                        </div>
+                        <div class="newscontenttext">{{item.content}}</div>
+                        <div class="newscontentbtn">
+                            <img class="newstime" src="./images/time.png">
+                            {{item.gmtCreate}}
+                            <img class="newswatch" src="./images/watch.png">
+                            {{item.watchNum}}
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="page-bar">
+                <ul class="pageSI">
+                    <li v-if="cur>1"><a v-on:click="cur--,pageClick()">上一页</a></li>
+                    <li v-if="cur==1"><a class="banclick">上一页</a></li>
+                    <!--当前页背景色为蓝色-->
+                    <li v-for="index in indexs" v-bind:class="{ 'active': cur == index}">
+                        <a v-on:click="btnClick(index)">{{ index }}</a>
+                    </li>
+                    <li v-if="cur<all"><a v-on:click="cur++,pageClick()">下一页</a></li>
+                    <li v-if="cur == all"><a class="banclick">下一页</a></li>
+                    <li><a>共<i>{{all}}</i>页</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="newsrightlist">
+            <div class="newsrighttop">
+                <div class="newsrighttopcontent">
+                    <div class="nearnews">近期文章</div>
+                    <div class="nearnewscontent" v-for="(item,index) in newsByTime" v-if="index<5">
+                        <a v-bind:href="'./newsDetails.html?id='+item.id">{{item.title}}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="newsrightbottom">
+                <div class="newsrighttopcontent">
+                    <div class="nearnews">分类目录</div>
+                    <div class="newtypebox">
+                        <ul class="newstypelist">
+                            <li v-for="item in newsTypes">{{item.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="goTop" id="gotoTop">
+        <img src="./images/02.png" alt="">
+    </div>
+    <!-- 底部 -->
+    <div class="footer" id="link">
+        <div class="center">
+            <div class="left">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-gerenyonghutouxiang" style="color: #7B818D"></use>
+                </svg>
+                <span class="time">(9:00-21:00)</span>
+                <h3>0571-86390185</h3>
+                <span class="qq">QQ联系方式:1523446254</span>
+            </div>
+            <div class="zhongjian">
+                <ul>
+                    <li><a href="javascript:;">首 页</a></li>
+                    <li><a href="/case.html">案例欣赏</a></li>
+                    <li><a href="javascript:;">服务介绍</a></li>
+                    <li><a href="./news.html">新闻动态</a></li>
+                </ul>
+                <ul>
+                    <li><a href="./introduction.html">关于我们</a></li>
+                    <li><a href="./contact.html">联系我们</a></li>
+                    <li><a href="javascript:;">留言板</a></li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="picture">
+                    <img src="./images/xiaochengxu.jpg" alt="">
+                    <span class="guanzhu">关注微信公众号</span>
+                </div>
+            </div>
+            <div class="lianjie">
+                <span class="chuanmei">Copyright © 2013 - 2017　faane.com　杭州金廷基业房地产营销策划有限公司　版权所有 苏公网安备
+                    32011202000125号‍</span>
+                <div class="youqing">
+                    <ul>
+                        <li v-for='item in link'><a :href="'http://'+item.www">{{item.name}}</a></li>
+                    </ul>
+                </div>
+                <span class="chuanmei">手机版 | 苏ICP备18005516号</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script type="text/javascript">
+    var serverHost = getServerHost();
+    var serverHosts = getServerHosts();
+    var app = new Vue({
+        el: '#app',
+        data: {
+            news: [],
+            newsTypes: [],
+            all: "", //总页数
+            cur: 1, //当前页码
+            size: 10,
+            newsByTime: []
+        },
+        watch: {
+            cur: function (oldValue, newValue) {
+                console.log(arguments);
+            }
+        },
+        methods: {
+            btnClick: function (data) {
+                var that = this
+                if (data != that.cur) {
+                    that.cur = data;
+                }
+                $.ajax({
+                    url: serverHosts + '/news/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: that.cur,
+                        size: that.size
+                    },
+                    success: function (data) {
+                        that.news = data.data.records
+                        that.all = Math.ceil(data.data.total / that.size)
+                        var alla = Math.ceil(that.all)
+                        for (var i in data.data.records) {
+                            data.data.records[i].gmtCreate = formatDate(new Date(data.data
+                                .records[i].gmtCreate), 'yyyy-MM-dd')
+                        }
+                    }
+                })
+            },
+            pageClick: function () {
+                //获取新闻列表v
+                var that = this
+                $.ajax({
+                    url: serverHosts + '/news/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: that.cur,
+                        size: that.size
+                    },
+                    success: function (data) {
+                        that.news = data.data.records
+                        that.all = Math.ceil(data.data.total / that.size)
+                        var alla = Math.ceil(that.all)
+                        for (var i in data.data.records) {
+                            data.data.records[i].gmtCreate = formatDate(new Date(data.data
+                                .records[i].gmtCreate), 'yyyy-MM-dd')
+                        }
+                    }
+                })
+            },
+            findData: function () {
+                var that = app;
+                //获取新闻列表
+                $.ajax({
+                    url: serverHosts + '/news/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: 1,
+                        size: that.size
+                    },
+                    success: function (data) {
+                        that.news = data.data.records
+                        that.newsByTime = data.data.records
+                        that.all = Math.ceil(data.data.total / that.size)
+                        var alla = Math.ceil(that.all)
+                        for (var i in data.data.records) {
+                            data.data.records[i].gmtCreate = formatDate(new Date(data.data
+                                .records[i].gmtCreate), 'yyyy-MM-dd')
+                        }
+                    }
+                })
+                //获取新闻类目
+                $.ajax({
+                    url: serverHosts + '/newsTypes/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: 1,
+                        size: 10
+                    },
+                    success: function (data) {
+                        that.newsTypes = data.data.records
+                    }
+                })
+            }
+        },
+        computed: {
+            indexs: function () {
+                var left = 1;
+                var right = this.all;
+                var ar = [];
+                if (this.all >= 5) {
+                    //这里最大范围从3到6，如果到达7，那么下边加2变成9，已经超过最大的范围值
+                    if (this.cur > 3 && this.cur < this.all - 1) {
+                        //以4为参考基准，左面加2右边加2
+                        left = this.cur - 2
+                        right = this.cur + 2
+                    } else {
+                        if (this.cur <= 3) {
+                            left = 1
+                            right = 5
+                        } else {
+                            right = this.all
+                            left = this.all - 4
+                        }
+                    }
+                }
+                while (left <= right) {
+                    ar.push(left)
+                    left++
+                }
+                console.log(ar);
+                return ar
+            }
+        }
+    });
+    app.findData();
+</script>
+
+</html>
+<script>
+    var serverHost = getServerHosts();
+    var link = new Vue({
+        el: '#link',
+        data: {
+            link: []
+        },
+        methods: {
+            findData: function () {
+                var that = link;
+                $.ajax({
+                    url: serverHost + '/links/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: 1,
+                        size: 20
+                    },
+                    success: function (data) {
+                        that.link = data.data.records
+                        console.log(that.link)
+                    }
+                })
+            }
+        },
+    })
+    link.findData()
+    gotoTop();
+</script>

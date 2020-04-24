@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" href="./css/header.css" rel="stylesheet" />
+    <link type="text/css" href="./css/contact.css" rel="stylesheet" />
+    <link type="text/css" href="./css/footer.css" rel="stylesheet" />
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="http://api.map.baidu.com/api?v=1.3" type="text/javascript"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/method.js"></script>
+    <script src="./js/iconfont.js"></script>
+    <script src="./js/goTop.js"></script>
+    <link rel="Shortcut Icon" href="./images/logo3.png" />
+    <title>金廷基业房地产营销策划</title>
+    <style>
+        #icon {
+            width: 60px;
+            height: 60px;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body style="margin: 0">
+    <div id="app">
+        <div class="header">
+            <div class="header_center">
+                <div class="header_image">
+                    <img src="./images/logo2.png" alt="金廷">
+                </div>
+                <div class="navigation">
+                    <div class="navigation-nav">
+                        <ul class="navigation-item" id="toubua">
+                            <li><a href="index.html">首页</a></li>
+                            <li><a href="./introduction.html">公司介绍</a></li>
+                            <li><a href="./case.html">热销项目</a></li>
+                            <li><a href="./news.html">新闻资讯</a></li>
+                            <li><a href="javascriot:;" id="active">联系我们</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="companyImg">
+                <img src="./images/lianxiwomen.jpg" alt="" style="height:500px;width:100%">
+            </div>
+        </div>
+        <!-- 主体部分 -->
+        <div class="section">
+            <div class="content">
+                <div class="contactTitle">
+                    <span>联系我们</span>
+                </div>
+                <div class="ditu" id="map"></div>
+                <div class="lxwm">
+                    <h3>联系我们</h3>
+                    <span class="hours">如有任何问题请联系我们，我们7*24小时竭诚为您服务</span>
+                    <br>
+                    <span class="phone">{{phone}}</span>
+                    <div class="threeRectangle">
+                        <div class="rectangle">
+                            <img src="./images/qq.png">
+                            <span>QQ:{{qqNumber}}</span>
+                        </div>
+                        <div class="rectangle">
+                            <img src="./images/email.png">
+                            <span>{{email}}</span>
+                        </div>
+                        <div class="rectangle">
+                            <img src="./images/wechat.png">
+                            <span>{{wxNumber}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="goTop" id="gotoTop">
+            <img src="./images/02.png" alt="">
+        </div>
+    
+        <!-- 底部 -->
+        <div class="footer" id="link">
+            <div class="center">
+                <div class="left">
+                    <svg class="icon" id="icon" aria-hidden="true">
+                        <use xlink:href="#icon-gerenyonghutouxiang" style="color: #7B818D"></use>
+                    </svg>
+                    <span class="time">(9:00-21:00)</span>
+                    <h3>0571-86390185</h3>
+                    <span class="qq">QQ联系方式:1523446254</span>
+                </div>
+                <div class="zhongjian">
+                    <ul>
+                        <li><a href="javascript:;">首 页</a></li>
+                        <li><a href="/case.html">案例欣赏</a></li>
+                        <li><a href="javascript:;">服务介绍</a></li>
+                        <li><a href="./news.html">新闻动态</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="./introduction.html">关于我们</a></li>
+                        <li><a href="./contact.html">联系我们</a></li>
+                        <li><a href="javascript:;">留言板</a></li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <div class="picture">
+                        <img src="./images/xiaochengxu.jpg" alt="">
+                        <span class="guanzhu">关注微信公众号</span>
+                    </div>
+                </div>
+                <div class="lianjie">
+                    <span class="chuanmei">Copyright © 2013 - 2017　faane.com　杭州金廷基业房地产营销策划有限公司　版权所有 苏公网安备
+                        32011202000125号‍</span>
+                    <div class="youqing">
+                        <ul>
+                            <li v-for='item in link'><a :href="'http://'+item.www">{{item.name}}</a></li>
+                        </ul>
+                    </div>
+                    <span class="chuanmei">手机版 | 苏ICP备18005516号</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var serverHost = getServerHosts();
+    var app = new Vue({
+        el:"#app",
+        data:{
+            phone:'',
+            qqNumber:'',
+            email:'',
+            wxNumber:'',
+            link:[]
+        },
+        methods: {
+            findCompany:function(){
+                var that = this;
+                $.ajax({
+                    url:serverHost+'/companyInfos/info',
+                    type:"get",
+                    dataType:'json',
+                    success:function(data){
+                        that.phone = data.data[0].phone;
+                        that.qqNumber = data.data[0].qqNumber;
+                        that.email = data.data[0].email;
+                        that.wxNumber = data.data[0].wxNumber
+                    }
+                })
+                $.ajax({
+                    url: serverHost + '/links/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: 1,
+                        size: 20
+                    },
+                    success: function (data) {
+                        that.link = data.data.records
+                    }
+                })
+            }
+        },
+    })
+    gotoTop();
+    app.findCompany();
+</script>
+<script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap() {
+        createMap(); //创建地图
+        setMapEvent(); //设置地图事件
+        addMapOverlay(); //向地图添加覆盖物
+    }
+
+    function createMap() {
+        map = new BMap.Map("map");
+        map.centerAndZoom(new BMap.Point(120.2589036784, 30.2416098466), 19);
+    }
+
+    function setMapEvent() {
+        map.enableScrollWheelZoom();
+        map.enableKeyboard();
+        map.enableDragging();
+        map.enableDoubleClickZoom()
+    }
+
+    function addClickHandler(target, window) {
+        target.addEventListener("click", function () {
+            target.openInfoWindow(window);
+        });
+    }
+
+    function addMapOverlay() {
+        var markers = [{
+            content: "地址：浙江省杭州市萧山区宁围街道博地世纪中心2幢2701-2室",
+            title: "杭州金廷基业房地产营销策划有限公司",
+            imageOffset: {
+                width: -46,
+                height: -21
+            },
+            position: {
+                lat: 30.2416098466,
+                lng: 120.2589036784
+            }
+        }];
+        for (var index = 0; index < markers.length; index++) {
+            var point = new BMap.Point(markers[index].position.lng, markers[index].position.lat);
+            var marker = new BMap.Marker(point, {
+                icon: new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png", new BMap.Size(
+                    20, 25), {
+                    imageOffset: new BMap.Size(markers[index].imageOffset.width, markers[index]
+                        .imageOffset.height)
+                })
+            });
+            var label = new BMap.Label(markers[index].title, {
+                offset: new BMap.Size(25, 5)
+            });
+            var opts = {
+                width: 200,
+                title: markers[index].title,
+                enableMessage: true
+            };
+            var infoWindow = new BMap.InfoWindow(markers[index].content, opts);
+            marker.setLabel(label);
+            addClickHandler(marker, infoWindow);
+            map.addOverlay(marker);
+        };
+    }
+    //向地图添加控件
+    function addMapControl() {
+        var scaleControl = new BMap.ScaleControl({
+            anchor: BMAP_ANCHOR_BOTTOM_LEFT
+        });
+        scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+        map.addControl(scaleControl);
+        var navControl = new BMap.NavigationControl({
+            anchor: BMAP_ANCHOR_TOP_LEFT,
+            type: BMAP_NAVIGATION_CONTROL_LARGE
+        });
+        map.addControl(navControl);
+        var overviewControl = new BMap.OverviewMapControl({
+            anchor: BMAP_ANCHOR_BOTTOM_RIGHT,
+            isOpen: true
+        });
+        map.addControl(overviewControl);
+    }
+    var map;
+    initMap();
+</script>

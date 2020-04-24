@@ -1,0 +1,231 @@
+.carousel_swipe {
+    position: relative;
+    width: 100%;
+    height: 750px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.swipe_list {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin-top: 0;
+}
+
+.companyImg{
+    width: 100%;
+    height: 540px;
+}
+
+.companyImg img{
+    width: 100%;
+    height: 100%;
+}
+
+.swipe_list li {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    list-style: none;
+}
+.swipe_list li a {
+    width: 100%;
+    height: 100%;
+}
+.swipe_list li img {
+    width: 100%;
+    height: 100%;
+}
+
+.swipe_dian {
+    position: absolute;
+    z-index: 90;
+    bottom: 0;
+    height: 60px;
+    text-align: center;
+    font-size: 0;
+    right: 10px;
+}
+
+.swipe_dian span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin: 26px 5px;
+    background-color: #5f5853;
+    cursor: pointer;
+}
+
+.swipe_dian .active {
+    background-color: #ffffff;
+}
+
+.swipe_control {
+    position: absolute;
+    z-index: 10;
+    top: 300px;
+    width: 100%;
+    height: 30px;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.swipe_control .prev,
+.swipe_control .next {
+    text-align: center;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0,0,0,.1);
+    padding: 10px;
+}
+
+.swipe_control .prev:hover {
+    color: #cccccc;
+    font-weight: bold;
+    opacity: 0.7;
+}
+
+.swipe_control .next:hover {
+    color: #cccccc;
+    font-weight: bold;
+    opacity: 0.7;
+}
+.list-in-enter-to {
+    transition: all 2s ease;
+    transform: translateX(0);
+}
+.list-in-leave-active {
+    transition: all 2s ease;
+    transform: translateX(-100%);
+}
+.list-in-enter {
+    transform: translateX(100%);
+}
+.list-in-leave {
+    transform: translateX(0);
+}
+
+/*切换到上一张的变化*/
+.list-out-leave {
+transform: translateX(0);
+}
+.list-out-leave-active {
+transition: all 2s ease;
+transform: translateX(100%);
+}
+.list-out-enter {
+transform: translateX(-100%);
+}
+.list-out-enter-to {
+transition: all 2s ease;
+transform: translateX(0);
+}
+
+.next{
+    position: relative;
+    left: -30px;
+}
+
+.section{
+    width: 100%;
+    height: 1000px;
+}
+
+.section .content{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.contactTitle{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.contactTitle span{
+    font-size: 16px;
+    font-weight: normal;
+    color: red;
+    border-left: 5px solid red;
+    padding-left: 10px;
+}
+
+.ditu{
+    width:1200px;
+    height:600px;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+.lxwm{
+    width: 1200px;
+    height: 342px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.lxwm h3{
+    font-size: 26px;
+    color: rgb(51, 51, 51);
+    padding-top: 15px;
+}
+
+.hours{
+    font-size: 16px;
+    color: #666666;
+    position: relative;
+    top: -15px;
+}
+
+.phone{
+    color: rgb(51, 51, 51);
+    font-size: 20px;
+}
+
+.threeRectangle{
+    width: 1200px;
+    height: 80px;
+    margin-top: 50px;
+    display: flex;
+}
+
+.rectangle{
+    width: 260px;
+    height: 80px;
+    border: 1px solid #CCCCCC;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.rectangle:nth-child(1){
+    position: relative;
+    left: 92px;
+}
+
+.rectangle:nth-child(3){
+    position: relative;
+    left: -92px;
+}
+
+.rectangle img{
+    width: 40px;
+    height: 40px;
+    margin-left: 30px;
+}
+
+.rectangle span{
+    font-size: 14px;
+    color: #666666;
+    padding-left: 25px;
+}
+
+.BMap_bubble_title{
+    width: 300px;
+}

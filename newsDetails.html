@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/method.js"></script>
+    <script src="./js/iconfont.js"></script>
+    <script src="./js/time.js"></script>
+    <script src="./js/goTop.js"></script>
+    <script>
+        window.addEventListener(('orientationchange' in window ? 'orientationchange' : 'resize'), (function () {
+            function c() {
+                var d = document.documentElement;
+                let clientWidths = d.clientWidth
+                if (clientWidths < 1260) {
+                    clientWidths = 1260
+                }
+                var cw = clientWidths || 1920;
+                d.style.fontSize = (20 * (cw / 960)) > 40 ? 40 + 'px' : (20 * (cw / 960)) + 'px';
+            }
+            c();
+            return c;
+        })(), false);
+        // $($('.contentli').width($('.contentli').innerWidth()))
+    </script>
+    <link rel="stylesheet" href="./css/newsDetails.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="Shortcut Icon" href="./images/logo3.png" />
+    <title>金廷基业房地产营销策划</title>
+</head>
+
+<body style="margin: 0">
+    <div class="header">
+        <div class="header_center">
+            <div class="header_image">
+                <img src="./images/logo2.png" alt="金廷">
+            </div>
+            <div class="navigation">
+                <div class="navigation-nav">
+                    <ul class="navigation-item" id="toubu">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="./introduction.html">公司介绍</a></li>
+                        <li><a href="./case.html">热销项目</a></li>
+                        <li><a href="./news.html" id="active">新闻资讯</a></li>
+                        <li><a href="./contact.html">联系我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="newscontent" id="app">
+        <div class="newsleftlist">
+            <div class="newsdetailheader">
+                <h1>{{title}}</h1>
+                <div class="newsintroduce">
+                    <img class="newstypeimg" src="./images/shopsmall.png">移动电商
+                    <img class="newstimeimg" src="./images/time.png">{{gmtCreate}}
+                    <img class="newswatchimg" src="./images/watch.png">{{watchNum}}
+                </div>
+            </div>
+            <div class="newscontentdata" v-html="content">{{content}}</div>
+        </div>
+        <div class="newsrightlist">
+            <div class="newsrighttop">
+                <div class="newsrighttopcontent">
+                    <div class="nearnews">近期文章</div>
+                    <div class="nearnewscontent" v-for="(item,index) in newsByTime" v-if="index<5">
+                        <a v-bind:href="'./newsDetails.html?id='+item.id">{{item.title}}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="newsrightbottom">
+                <div class="newsrighttopcontent">
+                    <div class="nearnews">分类目录</div>
+                    <div class="newtypebox">
+                        <ul class="newstypelist">
+                            <li v-for="item in newsTypes">{{item.name}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="goTop" id="gotoTop">
+        <img src="./images/02.png" alt="">
+    </div>
+    <!-- 底部 -->
+    <div class="footer" id="linka">
+        <div class="center">
+            <div class="left">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-gerenyonghutouxiang" style="color: #7B818D"></use>
+                </svg>
+                <span class="time">(9:00-21:00)</span>
+                <h3>0571-86390185</h3>
+                <span class="qq">QQ联系方式:1523446254</span>
+            </div>
+            <div class="zhongjian">
+                <ul>
+                    <li><a href="javascript:;">首 页</a></li>
+                    <li><a href="/case.html">案例欣赏</a></li>
+                    <li><a href="javascript:;">服务介绍</a></li>
+                    <li><a href="./news.html">新闻动态</a></li>
+                </ul>
+                <ul>
+                    <li><a href="./introduction.html">关于我们</a></li>
+                    <li><a href="./contact.html">联系我们</a></li>
+                    <li><a href="javascript:;">留言板</a></li>
+                </ul>
+            </div>
+            <div class="right">
+                <div class="picture">
+                    <img src="./images/xiaochengxu.jpg" alt="">
+                    <span class="guanzhu">关注微信公众号</span>
+                </div>
+            </div>
+            <div class="lianjie">
+                <span class="chuanmei">Copyright © 2013 - 2017　faane.com　杭州金廷基业房地产营销策划有限公司　版权所有 苏公网安备
+                    32011202000125号‍</span>
+                <div class="youqing">
+                    <ul>
+                        <li v-for='item in link'><a :href="'http://'+item.www">{{item.name}}</a></li>
+                    </ul>
+                </div>
+                <span class="chuanmei">手机版 | 苏ICP备18005516号</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script type="text/javascript">
+    //获取url中的参数
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg); //匹配目标参数
+        if (r != null) return unescape(r[2]);
+        return null; //返回参数值
+    }
+
+    //接收URL中的参数booksId
+    var id = getUrlParam('id');
+    console.log('id:' + id);
+
+    var serverHost = getServerHost();
+    var serverHosts = getServerHosts();
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            title: '',
+            watchNum: '',
+            content: '',
+            newsTypes: [],
+            gmtCreate: '',
+            newsByTime: []
+        },
+        methods: {
+            findData: function () {
+                var that = app;
+                //新闻详情
+                $.ajax({
+                    url: serverHosts + '/news/info/' + id,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (data) {
+                        that.title = data.data.title
+                        that.watchNum = data.data.watchNum
+                        that.gmtCreate = formatDate(new Date(data.data.gmtCreate), 'yyyy-MM-dd')
+                        that.content = data.data.content
+                    }
+                })
+                //获取新闻类目
+                $.ajax({
+                    url: serverHosts + '/newsTypes/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: 1,
+                        size: 10
+                    },
+                    success: function (data) {
+                        that.newsTypes = data.data.records
+                    }
+                })
+
+                //获取右侧近期文章
+                $.ajax({
+                    url: serverHosts + '/news/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: 1,
+                        size: 5,
+                    },
+                    success: function (data) {
+                        that.newsByTime = data.data.records
+                    }
+                })
+
+                //增加浏览量
+                $.ajax({
+                    url: serverHosts + '/news/update/' + id,
+                    type: "PUT",
+                    dataType: 'json',
+                    success: function (data) {
+
+                    }
+                })
+            }
+        },
+    });
+    app.findData();
+</script>
+
+</html>
+<script>
+    var serverHost = getServerHosts();
+    var link = new Vue({
+        el: '#linka',
+        data: {
+            link: []
+        },
+        methods: {
+            findData: function () {
+                var that = link;
+                $.ajax({
+                    url: serverHost + '/links/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: 1,
+                        size: 20
+                    },
+                    success: function (data) {
+                        that.link = data.data.records
+                        console.log(that.link)
+                    }
+                })
+            }
+        },
+    })
+    link.findData()
+    gotoTop();
+</script>

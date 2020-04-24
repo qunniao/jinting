@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" href="./css/header.css" rel="stylesheet" />
+    <link type="text/css" href="./css/footer.css" rel="stylesheet" />
+    <link type="text/css" href="./css/introduction.css" rel="stylesheet" />
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/method.js"></script>
+    <script src="./js/iconfont.js"></script>
+    <script src="./js/goTop.js"></script>
+    <script>
+        window.addEventListener(('orientationchange' in window ? 'orientationchange' : 'resize'), (function () {
+            function c() {
+                var d = document.documentElement;
+                let clientWidths = d.clientWidth
+                if (clientWidths < 1260) {
+                    clientWidths = 1260
+                }
+                var cw = clientWidths || 1920;
+                d.style.fontSize = (20 * (cw / 960)) > 40 ? 40 + 'px' : (20 * (cw / 960)) + 'px';
+            }
+            c();
+            return c;
+        })(), false);
+        // $($('.contentli').width($('.contentli').innerWidth()))
+    </script>
+    <link rel="Shortcut Icon" href="./images/logo3.png" />
+    <title>金廷基业房地产营销策划</title>
+</head>
+
+<body style="margin: 0">
+    <div id="app">
+        <div class="header">
+            <div class="header_center">
+                <div class="header_image">
+                    <img src="./images/logo2.png" alt="金廷">
+                </div>
+                <div class="navigation">
+                    <div class="navigation-nav">
+                        <ul class="navigation-item" id="toubu">
+                            <li><a href="index.html">首页</a></li>
+                            <li><a href="javascriot:;" id="active">公司介绍</a></li>
+                            <li><a href="./case.html">热销项目</a></li>
+                            <li><a href="./news.html">新闻资讯</a></li>
+                            <li><a href="./contact.html">联系我们</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="bj">
+                <img src="./images/introductionBj.png">
+                <div class="bjContent">
+                    <div class="bjContent_center">
+                        <p class="jj"><span class="jja">公司</span>简介</p>
+                        <p class="jieshao" v-html="intro">{{intro}}</p>
+                    </div>
+                </div>
+                <!-- <div class="gongsijianjie">
+                    <p class="gongsi"><span>公司</span>简介</p>
+                    <p class="jianjie">简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介</p>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- 主体部分 -->
+        <div class="section">
+            <!-- <div class="first">
+                <div class="firstCenter">
+                    <div class="firstCenter_top">
+                        <div class="firstCenter_top_content">
+                            <img src="./images/lingxing.png" alt="">
+                            <p class="zhuyin">主营业务<span>MAIN BUSINESS</span></p>
+                        </div>
+                    </div>
+                    <div class="firstCenter_bottom" v-for="item in business">
+                        <div class="firstCenter_bottom_center">
+                            <div class="firstCenter_bottom_left">
+                                <div class="firstCenter_bottom_left_top">
+                                    <div class="square"></div>
+                                    <span>{{item.name}}</span>
+                                </div>
+                                <p class="content">{{item.value}}</p>
+                            </div>
+                            <div class="firstCenter_bottom_right">
+                                <img :src="item.img" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="three">
+                <div class="threeConter">
+                    <div class="threeConter_top">
+                        <span class="anlizhanshi">办公环境</span>
+                        <p>WORK ENVIRONMENT</p>
+                    </div>
+                    <div class="threeConter_bottom">
+                        <div class="carousel" @mouseenter="enter" @mouseleave="leave">
+                            <transition-group tag="ul" name="image" enter-active-class="animated lightSpeedIn"
+                                leave-active-class="animated lightSpeedOut">
+                                <li v-for="(image,index) in img" :key="index" v-show="index === mark">
+                                    <img :src="image" class="bangonghuanjing">
+                                </li>
+                            </transition-group>
+                            <!-- <div class="bullet">
+                                <span v-for="(item,index) in img.length" :class="{'active':index === mark}"
+                                    @click="change(index)" :key="index"></span>
+                            </div> -->
+                            <div class="switch">
+                                <span class="prev" @click="prev">&lt;</span>
+                                <span class="next" @click="next">&gt;</span>
+                            </div>
+                        </div>
+                        <!-- <div class="caseItem">
+                            <img src="./images/huanjing2.png" alt="">
+                        </div>
+                        <div class="caseItem">
+                            <img src="./images/huanjing3.png" alt="">
+                        </div>
+                        <div class="caseItem">
+                            <img src="./images/huanjing4.png" alt="">
+                        </div>
+                        <div class="caseItem">
+                            <img src="./images/huanjing5.png" alt="">
+                        </div>
+                        <div class="caseItem">
+                            <img src="./images/huanjing6.png" alt="">
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="goTop" id="gotoTop">
+            <img src="./images/02.png" alt="">
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer" id="link">
+            <div class="center">
+                <div class="left">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-gerenyonghutouxiang" style="color: #7B818D"></use>
+                    </svg>
+                    <span class="time">(9:00-21:00)</span>
+                    <h3>0571-86390185</h3>
+                    <span class="qq">QQ联系方式:1523446254</span>
+                </div>
+                <div class="zhongjian">
+                    <ul>
+                        <li><a href="javascript:;">首 页</a></li>
+                        <li><a href="/case.html">案例欣赏</a></li>
+                        <li><a href="javascript:;">服务介绍</a></li>
+                        <li><a href="./news.html">新闻动态</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="./introduction.html">关于我们</a></li>
+                        <li><a href="./contact.html">联系我们</a></li>
+                        <li><a href="javascript:;">留言板</a></li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <div class="picture">
+                        <img src="./images/xiaochengxu.jpg" alt="">
+                        <span class="guanzhu">关注微信公众号</span>
+                    </div>
+                </div>
+                <div class="lianjie">
+                    <span class="chuanmei">Copyright © 2013 - 2017　faane.com　杭州金廷基业房地产营销策划有限公司　版权所有 苏公网安备
+                        32011202000125号‍</span>
+                    <div class="youqing">
+                        <ul>
+                            <li v-for='item in link'><a :href="'http://'+item.www">{{item.name}}</a></li>
+                        </ul>
+                    </div>
+                    <span class="chuanmei">手机版 | 苏ICP备18005516号</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var serverHost = getServerHosts();
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            intro: '',
+            business: [],
+            link: [],
+            mark: 0,
+            img: [],
+            time: null
+        },
+        methods: {
+            findCompany: function () {
+                var that = app;
+                $.ajax({
+                    url: serverHost + '/companyInfos/info',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (data) {
+                        that.intro = data.data[0].intro
+                        that.business = JSON.parse(data.data[0].businessJson)
+                        that.img = data.data[0].environmentJson.split(',')
+                    }
+                })
+
+                $.ajax({
+                    url: serverHost + '/links/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: 1,
+                        size: 20
+                    },
+                    success: function (data) {
+                        that.link = data.data.records
+                    }
+                })
+            },
+            change(i) {
+                this.mark = i;
+            },
+            prev() {
+                this.mark--;
+                if (this.mark === -1) {
+                    this.mark = 5;
+                    return
+                }
+            },
+            next() {
+                this.mark++;
+                if (this.mark === 6) {
+                    this.mark = 0;
+                    return
+                }
+            },
+            autoPlay() {
+                this.mark++;
+                if (this.mark === 6) {
+                    this.mark = 0;
+                    return
+                }
+            },
+            play() {
+                this.time = setInterval(this.autoPlay, 5000);
+            },
+            enter() {
+                console.log('enter')
+                clearInterval(this.time);
+            },
+            leave() {
+                console.log('leave')
+                this.play();
+            }
+        },
+        created() {
+            this.play()
+        }
+    })
+    gotoTop();
+    app.findCompany()
+</script>

@@ -1,0 +1,181 @@
+body{
+    background: #F5F4F4;
+}
+
+#zhanshi{
+    color: #0B7A3A;
+    border-bottom: 3px solid #0B7A3A;
+}
+
+.header_content{
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 13px;
+    padding-bottom: 20px;
+}
+
+.header_content .weizhi{
+    font-size: 14px;
+    color: #656565;
+    line-height: 70px;
+}
+
+.img_content{
+    width: 100%;
+    display: flex;
+}
+
+.img_content img{
+    width: 700px;
+    height: 510px;
+}
+
+.content{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+}
+
+.content h3{
+    font-size: 32px;
+    line-height: 0;
+    margin-top: 12px;
+    padding-bottom: 20px;
+}
+
+.content .fuwu{
+    font-size: 16px;
+    color: #656565;
+    line-height: 40px;
+}
+
+.price{
+    display: flex;
+    margin-top: 55px;
+    font-size: 26px;
+}
+
+.jgbt{
+    color: #656565;
+}
+
+.money{
+    color: red;
+    display: flex;
+}
+
+.ljzx{
+    width: 240px;
+    height: 70px;
+    line-height: 70px;
+    background: red;
+    color: #fff;
+    border-radius: 2px;
+    border: 0;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 45px;
+}
+
+.section{
+    width: 1220px;
+    height: 1000px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.section .left{
+    width: 790px;
+    float: left;
+    background: #fff;
+}
+
+.section .right{
+    width: 395px;
+    margin-left: 15px;
+    float: right;
+    background: #fff;
+}
+
+.details{
+    width:100%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 22px;
+    color: #2E2E2E;
+    padding-left: 20px;
+    border-bottom: 1px solid #eee; 
+}
+
+.tjal{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.tjal img{
+    width: 30px;
+    height: 30px;
+    padding: 0 10px;
+}
+
+.tjaltitle{
+    font-size: 22px;
+    color: #2E2E2E;
+}
+
+.anliItem{
+    width: 90%;
+    border-bottom: 1px solid #eee;
+    margin-left: 5%;
+    display: flex;
+}
+
+.anliItem a{
+    display: flex;
+    color: #333;
+    text-decoration: none;
+}
+
+.anliItem:last-child{
+    border-bottom: 0;
+}
+
+.anliItem img{
+    width: 180px;
+    height: 150px;
+    border-radius: 3px;
+    margin-top: 35px;
+    margin-bottom: 40px;
+}
+
+.anliItem .righta{
+    display: flex;
+    padding-left: 15px;
+    flex-direction: column;
+}
+
+.anliItem .righta h4{
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.jaigea{
+    font-size: 18px;
+    color: red;
+    margin-top: -10px;
+}
+
+.leimu{
+    font-size: 22px;
+    color: #656565;
+    margin-top: 20px;
+}
+
+.neirong img{
+    width: 100%;
+}

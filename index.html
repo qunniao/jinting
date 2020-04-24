@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" href="./css/header.css" rel="stylesheet" />
+    <link type="text/css" href="./css/footer.css" rel="stylesheet" />
+    <link type="text/css" href="./css/index.css" rel="stylesheet" />
+    <link rel="Shortcut Icon" href="./images/logo3.png" />
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/method.js"></script>
+    <script src="./js/iconfont.js"></script>
+    <script src="./js/time.js"></script>
+    <script src="./js/goTop.js"></script>
+    <script>
+        window.addEventListener(('orientationchange' in window ? 'orientationchange' : 'resize'), (function () {
+            function c() {
+                var d = document.documentElement;
+                let clientWidths = d.clientWidth
+                if (clientWidths < 1260) {
+                    clientWidths = 1260
+                }
+                var cw = clientWidths || 1920;
+                d.style.fontSize = (20 * (cw / 960)) > 40 ? 40 + 'px' : (20 * (cw / 960)) + 'px';
+            }
+            c();
+            return c;
+        })(), false);
+        // $($('.contentli').width($('.contentli').innerWidth()))
+    </script>
+    <title>金廷基业房地产营销策划</title>
+</head>
+
+<body style="margin: 0">
+    <div id="app">
+        <div class="header">
+            <div class="header_center">
+                <div class="header_image">
+                    <img src="./images/logo2.png" alt="金廷">
+                </div>
+                <div class="navigation">
+                    <div class="navigation-nav">
+                        <ul class="navigation-item" id="toubu">
+                            <li><a href="javascript:;" id="active">首页</a></li>
+                            <li><a href="./introduction.html">公司介绍</a></li>
+                            <li><a href="./case.html">热销项目</a></li>
+                            <li><a href="./news.html">新闻资讯</a></li>
+                            <li><a href="./contact.html">联系我们</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel" @mouseenter="enter" @mouseleave="leave">
+                    <transition-group tag="ul" name="image" enter-active-class="animated lightSpeedIn"
+                        leave-active-class="animated lightSpeedOut">
+                        <li v-for="(image,index) in img" :key="index" v-show="index === mark">
+                            <a href="javascript:;">
+                                <img :src="image">
+                            </a>
+                        </li>
+                    </transition-group>
+                    <div class="bullet">
+                        <span v-for="(item,index) in img.length" :class="{'activea':index === mark}" @click="change(index)"
+                            :key="index"></span>
+                    </div>
+                    <div class="switch">
+                        <span class="prev" @click="prev">&lt;</span>
+                        <span class="next" @click="next">&gt;</span>
+                    </div>
+                </div>
+            <!-- <img src="./images/banner2.jpg" class="bj">
+            <div class="ppgs">
+                <div class="ppgsLeft">
+                    <div class="ppgstitle">
+                        <span class="logi">品牌故事</span>
+                        <p class="hengxian"></p>
+                        <span class="content" v-html="intro">{{intro}}</span>
+                    </div>
+                </div>
+                <div class="ppgsRight">
+                    <img src="./images/toptwo.png" alt="">
+                </div>
+            </div> -->
+        </div>
+    
+        <!-- 主体部分 -->
+        <div class="section" id="asd">
+            <!-- <div class="first">
+                <div class="firstCenter">
+                    <div class="biaoti">
+                        <span class="zyyw">主营业务</span>
+                        <p class="mainBusiness">MAIN BUSINESS</p>
+                    </div>
+                    <div class="threeYewu">
+                        <div class="yewuItem" v-for="item in yewu">
+                            <div class="yewuItemTop">
+                                <img :src="item.img" alt="">
+                                <div class="wenzi">
+                                    <span class="ershoufang">{{item.name}}</span>
+                                    <span class="more">更多></span></span>
+                                </div>
+                            </div>
+                            <div class="yewuItemBottome">
+                                <p class="bottomContent">{{item.value}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+    
+            <!-- <div class="secoud">
+                <div class="secoudCenter">
+                    <div class="youshiItem">
+                        <img src="./images/zhuanye.png" alt="">
+                        <span class="zhuanye">专业</span>
+                        <span class="youshiContent">金廷基业汇聚精英人才，提供一手策化
+                            代理、全盘营销、二手房买卖、租凭、包租房产
+                            按揭等专业的房产服务。并打造了在线真房
+                            源服务平台、致力于提供最专业的房地产租
+                            售服务</span>
+                    </div>
+                    <div class="youshiItem">
+                        <img src="./images/true.png" alt="">
+                        <span class="zhuanye">真实</span>
+                        <span class="youshiContent">金廷基金小程序自上线以来、致力于为
+                            用户提供最可靠的线上、线下服务、并承诺
+                            所有房源均真实可靠、通过不断革新的互联
+                            网IT技术、配合强大的大数据处理能力、已
+                            建立起了一套优质的房产生态体系</span>
+                    </div>
+                    <div class="youshiItem">
+                        <img src="./images/gaoxiao.png" alt="">
+                        <span class="zhuanye">高效</span>
+                        <span class="youshiContent">金廷紧跟时代步伐、以优质的线下经
+                            纪人服务和领先的线上互联网IT技术、为
+                            广大用户提供最快捷高效的服务：一键约
+                            看、买卖委托、在线咨询、地图找房、房
+                            价走势：买房、卖房、租房变得如此简单</span>
+                    </div>
+                </div>
+            </div> -->
+    
+            <div class="three">
+                <div class="threeConter">
+                    <div class="threeConter_top">
+                        <span class="anlizhanshi">热销项目</span>
+                        <!-- <p>商业地产、综合地产、住宅地产、其他各类资产的合作服务销售管理、项目全案代理</p> -->
+                    </div>
+                    <div class="threeConter_bottom">
+                        <div class="caseItem" v-for='(item,index) in casea' @click="details(item.case.cid)" v-if="index<5">
+                            <img :src="item.case.cover" alt="">
+                            <div class="productImg">
+                                <span class="productTitle">{{item.case.name}}</span>
+                                <div class="liaojie">了解更多<img src="./images/xiangyou.png" alt=""></div>
+                            </div>
+                        </div>
+                        <div class="caseItema" @click="geoGngduo">
+                            点击查看更多 》
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- 新闻资讯 -->
+            <div class="newstitle">新闻资讯</div>
+            <div class="newenglishtext">
+                <div class="newsline">—————————————————————</div>NEWS<div class="newslinetwo">—————————————————————</div>
+            </div>
+            <div class="newcenter">
+                <a v-bind:href="'./newsDetails.html?id='+item.id" v-for='(item,index) in newsItema' v-if="index===0">
+                    <img :src="item.cover" alt="">
+                </a>
+                <div class="newsright">
+                    <ul class="newstitleul">
+                        <li :class="activeClass == 0 ? 'active':'qwe'" @click="changeBgc(0)">全部</li>
+                        <li v-for="(item,index) in news" :class="activeClass == item.id ? 'active':'qwe'"
+                            @click="changeBgc(item.id)">{{item.name}}</li>
+                    </ul>
+                    <ul class="newstitleulleft ulleftright">
+                        <li v-for='(item,index) in newsItem'>
+                            <a v-bind:href="'./newsDetails.html?id='+item.id">
+                                <div class="newscontent">{{item.title}}</div>
+                                <div class="newstime">{{item.gmtCreate}}</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+            <!-- <div class="five">
+                <div class="fiveCenter">
+                    <div class="zimu">
+                        <span class="consociation">CONSOCIATION</span>
+                        <span class="dailishang">代理商成功合作展示</span>
+                    </div>
+                    <div class="zhanshi">
+                        <div class="zhanshiItem">
+                            <img src="./images/zhanshi1.png" alt="">
+                        </div>
+                        <div class="zhanshiItem">
+                            <img src="./images/zhanshi2.png" alt="">
+                        </div>
+                        <div class="zhanshiItem">
+                            <img src="./images/zhanshi3.png" alt="">
+                        </div>
+                        <div class="zhanshiItem">
+                            <img src="./images/zhanshi4.png" alt="">
+                        </div>
+                        <div class="zhanshiItem">
+                            <img src="./images/zhanshi5.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    
+        <div class="goTop" id="gotoTop">
+            <img src="./images/02.png" alt="">
+        </div>
+    
+        <!-- 底部 -->
+        <div class="footer" id="link">
+            <div class="center">
+                <div class="left">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-gerenyonghutouxiang" style="color: #7B818D"></use>
+                    </svg>
+                    <span class="time">(9:00-21:00)</span>
+                    <h3>0571-86390185</h3>
+                    <span class="qq">QQ联系方式:1523446254</span>
+                </div>
+                <div class="zhongjian">
+                    <ul>
+                        <li><a href="javascript:;">首 页</a></li>
+                        <li><a href="/case.html">案例欣赏</a></li>
+                        <li><a href="javascript:;">服务介绍</a></li>
+                        <li><a href="./news.html">新闻动态</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="./introduction.html">关于我们</a></li>
+                        <li><a href="./contact.html">联系我们</a></li>
+                        <li><a href="javascript:;">留言板</a></li>
+                    </ul>
+                </div>
+                <div class="right">
+                    <div class="picture">
+                        <img src="./images/xiaochengxu.jpg" alt="">
+                        <span class="guanzhu">关注微信公众号</span>
+                    </div>
+                </div>
+                <div class="lianjie">
+                    <span class="chuanmei">Copyright © 2013 - 2017　faane.com　杭州金廷基业房地产营销策划有限公司　版权所有 苏公网安备
+                        32011202000125号‍</span>
+                    <div class="youqing">
+                        <ul>
+                            <li v-for='item in link'><a :href="'http://'+item.www">{{item.name}}</a></li>
+                        </ul>
+                    </div>
+                    <span class="chuanmei">手机版 | 苏ICP备18005516号</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var serverHost = getServerHosts();
+    var serverHosts = getServerHost();
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            link: [],
+            casea: [],
+            news: [],
+            newsItem: [],
+            newsItema: [],
+            activeClass: 0,
+            intro:'',
+            yewu:[],
+            mark: 0,
+            img: [
+                './images/lunbo1.jpg',
+                './images/lunbo2.jpg',
+                './images/lunbo3.jpg'
+            ],
+            time: null
+        },
+        methods: {
+            details:function(e){
+                window.location.href='caseDetails.html?cid='+e
+            },
+            geoGngduo:function(){
+                window.location.href = 'case.html'
+            },
+            changeBgc: function (index) {
+                var that = app
+                this.activeClass = index;
+                if (index == 0) {
+                    index = ''
+                }
+                $.ajax({
+                    url: serverHost + '/news/list',
+                    type: "get",
+                    dataType: "json",
+                    data: {
+                        current: 1,
+                        size: 10,
+                        typeId: index
+                    },
+                    success(res) {
+                        that.newsItem = res.data.records
+                        for (var i in that.newsItem) {
+                            that.newsItem[i].gmtCreate = formatDate(new Date(that.newsItem[i]
+                                .gmtCreate), 'yyyy-MM-dd')
+                        }
+                    }
+                })
+            },
+            change(i) {
+                this.mark = i;
+            },
+            prev() {
+                this.mark--;
+                if (this.mark === -1) {
+                    this.mark = 2;
+                    return
+                }
+            },
+            next() {
+                this.mark++;
+                if (this.mark === 3) {
+                    this.mark = 0;
+                    return
+                }
+            },
+            autoPlay() {
+                this.mark++;
+                if (this.mark === 3) {
+                    this.mark = 0;
+                    return
+                }
+            },
+            play() {
+                this.time = setInterval(this.autoPlay, 5000);
+            },
+            enter() {
+                clearInterval(this.time);
+            },
+            leave() {
+                this.play();
+            },
+            findData: function () {
+                var that = app;
+                //获取公司信息
+                $.ajax({
+                    url: serverHost + '/companyInfos/info',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (data) {
+                        that.intro = data.data[0].intro
+                        that.yewu = JSON.parse(data.data[0].businessJson)
+                    }
+                })
+                //获取底部友情链接
+                $.ajax({
+                    url: serverHost + '/links/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: 1,
+                        size: 20
+                    },
+                    success: function (data) {
+                        that.link = data.data.records
+                        console.log(that.link)
+                    }
+                })
+                //获取案例展示列表
+                $.ajax({
+                    url: serverHost + '/case',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        page: 1
+                    },
+                    success: function (data) {
+                        that.casea = data.data
+                    }
+                })
+                //获取新闻类目
+                $.ajax({
+                    url: serverHost + '/newsTypes/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: 1,
+                        size: 10
+                    },
+                    success: function (data) {
+                        that.news = data.data.records
+                    }
+                })
+                //获取新闻列表
+                $.ajax({
+                    url: serverHost + '/news/list',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        current: 1,
+                        size: 10
+                    },
+                    success: function (data) {
+                        that.newsItem = data.data.records
+                        that.newsItema = data.data.records
+                        for (var i in data.data.records) {
+                            data.data.records[i].gmtCreate = formatDate(new Date(data.data
+                                .records[i].gmtCreate), 'yyyy-MM-dd')
+                        }
+                    }
+                })
+            }
+        },
+        created() {
+            this.play()
+        }
+    })
+
+    app.findData();
+    gotoTop();
+</script>
